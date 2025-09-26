@@ -81,6 +81,51 @@ import heapq
         }
     };
 '''
+*(Описание реализации с использованием std::vector и алгоритмов из <algorithm>, временная сложность операций)*
+- Биномиальная куча: *(Описание реализации с использованием классов и указателей)*
+- Куча Фибоначчи: *(Описание реализации, требующее более сложной организации памяти)*
+### Хеш-таблица:
+''' c++
+    #include <iostream>
+    #include <string>
+    #include <vector>
+
+    class HashTable {
+    private:
+        std::vector<std::vector<std::pair<std::string, int>>> table;
+        int size;
+
+    public:
+        HashTable(int size) : size(size), table(size) {}
+
+        void insert(const std::string& key, int value) {
+            int index = hash(key) % size;
+            table[index].push_back(std::make_pair(key, value));
+        }
+
+        int get(const std::string& key) {
+            int index = hash(key) % size;
+            for (const auto& pair : table[index]) {
+                if (pair.first == key) {
+                    return pair.second;
+                }
+            }
+            return -1; // Или другое значение по умолчанию
+        }
+
+    private:
+        unsigned int hash(const std::string& key) {
+            unsigned int hashValue = 0;
+            for (char c : key) {
+                hashValue = hashValue * 31 + c;
+            }
+            return hashValue;
+        }
+    };
+'''
+## 4. Представление структур данных на Java
+
+### Бинарная куча:
 
 
 
