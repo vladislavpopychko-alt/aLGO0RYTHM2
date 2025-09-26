@@ -126,6 +126,93 @@ import heapq
 ## 4. Представление структур данных на Java
 
 ### Бинарная куча:
+''' java
+    import java.util.PriorityQueue;
 
+    class BinaryHeap {
+        private PriorityQueue<Integer> heap;
+
+        public BinaryHeap() {
+            heap = new PriorityQueue<>();
+        }
+
+        public void insert(int key) {
+            heap.add(key);
+        }
+
+        public Integer extractMin() {
+            return heap.poll();
+        }
+    }
+'''
+(Описание реализации с использованием PriorityQueue, временная сложность операций)
+- Биномиальная куча: (Описание реализации с использованием классов и ссылок)
+- Куча Фибоначчи: (Описание реализации, требующее более сложной работы с памятью)
+### Хеш-таблица:
+''' java
+    import java.util.HashMap;
+    import java.util.LinkedList;
+
+    class HashTable<K, V> {
+        private int size;
+        private LinkedList<Entry<K, V>>[] table;
+
+        public HashTable(int size) {
+            this.size = size;
+            table = new LinkedList[size];
+            for (int i = 0; i < size; i++) {
+                table[i] = new LinkedList<>();
+            }
+        }
+
+        public void put(K key, V value) {
+            int index = hash(key) % size;
+            LinkedList<Entry<K, V>> list = table[index];
+            for (Entry<K, V> entry : list) {
+                if (entry.key.equals(key)) {
+                    entry.value = value;
+                    return;
+                }
+            }
+            list.add(new Entry<>(key, value));
+        }
+
+        public V get(K key) {
+            int index = hash(key) % size;
+            LinkedList<Entry<K, V>> list = table[index];
+            for (Entry<K, V> entry : list) {
+                if (entry.key.equals(key)) {
+                    return entry.value;
+                }
+            }
+            return null;
+        }
+
+        private int hash(K key) {
+            return Math.abs(key.hashCode());
+        }
+
+        private static class Entry<K, V> {
+            K key;
+            V value;
+
+            public Entry(K key, V value) {
+                this.key = key;
+                this.value = value;
+            }
+        }
+    }
+'''
+## 5. Анализ и сравнение предложенных вариантов
+### Сравнение эффективности: 
+(Таблица с временной сложностью основных операций для каждой структуры данных на каждом языке)
+### Особенности реализации на разных языках:
+  - Python: простота реализации, использование встроенных структур данных, возможная потеря в производительности.
+  - C++: большая гибкость и контроль над памятью, возможность оптимизации, более сложный код.
+  - Java: хороший баланс между производительностью и удобством разработки, использование стандартных библиотек.
+### Особенности формирования линейных структур данных: 
+(Обсуждение влияния выбора языка на организацию памяти, использование указателей/ссылок, управление памятью)
+## 6. Выводы и заключение
+В заключение, данная работа позволила углубить знания о структурах данных "бинарная куча/биномиальная куча/куча Фибоначчи/хеш-таблицы" и их реализации на различных языках программирования. Были разработаны собственные варианты представлений, проанализированы их особенности и проведено сравнение эффективности.
 
 
