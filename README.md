@@ -52,5 +52,35 @@ import heapq
                         return v
             return None
 '''
+(Описание реализации с использованием списков или словарей для разрешения коллизий, анализ хеш-функций)
+## 3. Представление структур данных на C++
+
+### Бинарная куча:
+''' c++
+#include <vector>
+    #include <algorithm>
+
+    class BinaryHeap {
+    private:
+        std::vector<int> heap;
+    public:
+        void insert(int key) {
+            heap.push_back(key);
+            std::push_heap(heap.begin(), heap.end(), std::greater<int>());
+        }
+
+        int extract_min() {
+            if (!heap.empty()) {
+                std::pop_heap(heap.begin(), heap.end(), std::greater<int>());
+                int min_val = heap.back();
+                heap.pop_back();
+                return min_val;
+            } else {
+                return -1; // Или другое значение по умолчанию
+            }
+        }
+    };
+'''
+
 
 
