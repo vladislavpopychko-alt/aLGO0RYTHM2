@@ -9,4 +9,20 @@
 ## 2. Представление структур данных на Python
 
 •  Бинарная куча:
+### Python 
+'''    import heapq
+
+    class BinaryHeap:
+        def __init__(self):
+            self.heap = []
+
+        def insert(self, key):
+            heapq.heappush(self.heap, key)
+
+        def extract_min(self):
+            if self.heap:
+                return heapq.heappop(self.heap)
+            else:
+                return None
+'''
 
