@@ -1,25 +1,4 @@
-Бимнарная куча:
-import java.util.PriorityQueue;
 
-    class BinaryHeap {
-        private PriorityQueue<Integer> heap;
-
-        public BinaryHeap() {
-            heap = new PriorityQueue<>();
-        }
-
-        public void insert(int key) {
-            heap.add(key);
-        }
-
-        public Integer extractMin() {
-            return heap.poll();
-        }
-    }
-
-
-
-Хеш-таблица:
     import java.util.HashMap;
     import java.util.LinkedList;
 
